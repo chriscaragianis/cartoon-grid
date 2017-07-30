@@ -1,17 +1,14 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import Button from './Button';
-import Welcome from './Welcome';
+import Grid from "../Grid.js';
+import Cell from "../Cell.js;
 
-storiesOf('Welcome', module)
-  .add('to Storybook', () => (
-    <Welcome showApp={linkTo('Button')}/>
+storiesOf('Grid', module)
+  .add('12 cell grid', () => (
+    <Grid cells=12 />
   ));
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button onClick={action('clicked')}>Hello Button</Button>
-  ))
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
+storiesOf('Cell', module)
+  .add('by color', () => (
+    <Cell color="red" /> ;
   ));
