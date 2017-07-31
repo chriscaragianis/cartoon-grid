@@ -24,6 +24,7 @@ class Grid extends React.Component {
   render() {
     const {height, width} = this.state;
     const style = {};
+    const cellStyle = {};
     if (height / width > 0.62) {
       style.width = '100%';
       style.height = `${0.62 * width}px`;
@@ -31,16 +32,23 @@ class Grid extends React.Component {
       style.height = '100vh';
       style.width = `${1.62 * height}px`;
     }
+    if (height > width) {
+      style.height = `${12 * 0.621 * width}px`;
+      style.flexWrap = "no-wrap";
+      style.flexDirection = 'column';
+      cellStyle.height = `${0.62 * width}px`;
+      cellStyle.width = '100%';
+    }
     const cells = [];
     for (var i = 0; i < this.props.cells; i++) {
       if (i % 3 == 0) {
-        cells.push(<Cell color="green" />)
+        cells.push(<Cell color="green" style={ cellStyle } />)
       }
       if (i % 3 == 1) {
-        cells.push(<Cell color="orange" />)
+        cells.push(<Cell color="orange" style={ cellStyle } />)
       }
       if (i % 3 == 2) {
-        cells.push(<Cell color="pink" />)
+        cells.push(<Cell color="pink" style={ cellStyle } />)
       }
     }
     return (
